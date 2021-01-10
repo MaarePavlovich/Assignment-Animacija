@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Animacija</title>
+
+    <style>
+        @keyframes Rotation {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes Bubbles {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #050210;
+        }
+
+        .hypnotic {
+            box-sizing: border-box;
+            width: 18rem;
+            height: 18rem;
+            border-radius: 50%;
+            background: conic-gradient(#b97aff, #55fb9f, #fb5dad, #55fb9f, #b97aff);
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -9rem;
+            margin-top: -9rem;
+
+            animation-name: Rotation;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .hypnotic::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 18rem;
+            height: 18rem;
+            border-radius: 50%;
+            background: inherit;
+            filter: blur(3rem);
+        }
+
+        .hypnotic-inner {
+            box-sizing: border-box;
+            position: absolute;
+            top: 7%;
+            left: 7%;
+            width: 86%;
+            height: 86%;
+            border-radius: 50%;
+            text-align: center;
+            background-color: #050210;
+        }
+
+        .hypnotic-inner::before,
+        .hypnotic-inner::after {
+            box-sizing: border-box;
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            border-radius: 50%;
+            transform: scale(0);
+            filter: brightness(4);
+            background-color: inherit;
+
+            animation-name: Bubbles;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+
+        .hypnotic-inner::after {
+            animation-delay: 1s;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="hypnotic">
+        <div class="hypnotic-inner"></div>
+    </div>
+
+</body>
+
+</html>
